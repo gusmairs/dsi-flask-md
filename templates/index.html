@@ -36,20 +36,27 @@
           request.bind('complete', show_results)
           request.open('POST', '/solve', True)
           request.set_header('content-type','application/json')
-          data = json.dumps({'a_value': document['a_value'].value,
-                             'b_value': document['b_value'].value,
-                             'c_value': document['c_value'].value})
+          data = json.dumps({'a_value': document['a'].value,
+                             'b_value': document['b'].value,
+                             'c_value': document['c'].value})
           request.send(data)
 
       document['solve_button'].bind('click', get_values)
 
     </script>
 
-    <textarea id='a_value'></textarea><p></p>
-    <textarea id='b_value'></textarea><p></p>
-    <textarea id='c_value'></textarea><p></p>
-    <button id='solve_button'>Solve!</button><p></p>
-    <div id="result"></div>
+    <div>
+          <span>a:</span> <input id='a'></input>
+          <span>b:</span> <input id='b'></input>
+          <span>c:</span> <input id='c'></input>
+    </div>
+
+    <p>
+    <button type='button', id='solve_button'>Solve!</button>
+    </p>
+
+    <div>
+    <p>The solution is: <span id='result'></span></p>
 
 
 </body>

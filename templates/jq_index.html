@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Quadratic Equation Solver</title>
+  <meta name="description" content="Quadratic Equation Solver">
+  <meta name="author" content="gus">
+
+  <script type="text/javascript" src="jquery.js"></script>
+
+</head>
+
+<body>
+
+    <h1>The Quadratic Equation Solver</h1>
+    <p>This app will solve quadratic equations for you.</p>
+    <p>Please enter the coefficients below.</p>
+
+    <script type='text/javascript'>
+
+      show_results = function(response) {
+          $('span#result').html(response.a)
+      }
+
+      get_values = function() {
+          var a = $('input#a').val()
+          alert(a);
+          return {'a': parseInt(a)}
+      };
+
+      solve_it = function(values) {
+          $.ajax({
+              url: '/solve',
+              contentType: 'application/json',
+              method: 'POST',
+              success: function(data) {
+                  show_results(data);
+              },
+              data: JSON.stringify(values.a)
+          });
+      };
+
+      $(document).ready(function() {
+          $('button#solve_button').click(function() {
+              var values = get_values()
+              solve_it(values);
+          })
+      })
+
+    </script>
+
+    <div>
+          <span>a:</span> <input id='a'></input>
+    </div>
+
+    <p>
+    <button type='button', id='solve_button'>Solve!</button>
+    </p>
+
+    <div>
+    <p>The solution is: <span id='result'></span></p>
+    </div>
+
+</body>
+</html>

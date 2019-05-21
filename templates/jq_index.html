@@ -19,23 +19,21 @@
 
     <script type='text/javascript'>
 
-      solve_it = function() {
+      solve_it = function(a, b) {
           $.ajax({
               url: '/solve',
               contentType: 'application/json',
               method: 'POST',
-              // success: function(data) {$('span#result').html(data.a)},
-              data: JSON.stringify(a)
+              data: JSON.stringify({'a': a, 'b': b}),
+              success: function(resp) {$('span#result').html(resp.ans)}
           })
-              .done(function(data) {
-                  $('span#result').html(data.a)
-              })
       }
 
       $().ready(function() {
           $('button#solve').click(function() {
-              a = parseInt($('input#a').val())
-              solve_it()
+              solve_it(parseInt($('input#a').val()),
+                       parseInt($('input#b').val())
+              )
           })
       })
 
@@ -43,6 +41,7 @@
 
     <div>
       <span>a:</span> <input id='a'></input>
+      <span>b:</span> <input id='b'></input>
     </div>
 
     <p>

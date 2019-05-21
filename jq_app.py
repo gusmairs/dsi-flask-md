@@ -9,8 +9,9 @@ def index():
 
 @app.route('/solve', methods=['POST'])
 def solve_it():
-    a = request.json
-    return jsonify({'a': a})
+    a = request.json['a']
+    b = request.json['b']
+    return jsonify({'ans': a + b})
 
     # params = request.json
     # a, b, c = (params['a_value'],

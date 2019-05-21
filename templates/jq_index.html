@@ -19,13 +19,8 @@
 
     <script type='text/javascript'>
 
-      show_results = function(response) {
-          $('span#result').html(response.a)
-      }
-
       get_values = function() {
-          var a = $('input#a').val()
-          alert(a);
+          a = $('input#a').val()
           return {'a': parseInt(a)}
       };
 
@@ -35,7 +30,7 @@
               contentType: 'application/json',
               method: 'POST',
               success: function(data) {
-                  show_results(data);
+                  $('span#result').html(data.a)
               },
               data: JSON.stringify(values.a)
           });
@@ -43,7 +38,7 @@
 
       $(document).ready(function() {
           $('button#solve_button').click(function() {
-              var values = get_values()
+              values = get_values()
               solve_it(values);
           })
       })

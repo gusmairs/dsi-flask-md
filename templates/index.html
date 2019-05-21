@@ -14,9 +14,9 @@
 
 <body onload='brython(1)'>
 
-    <h1>The Amazing DSI Quadratic Equation Solver</h1>
-    <p>This app will solve quadratic equations for you!</p>
-    <p>Please enter the coefficients below!</p>
+    <h1>The Quadratic Equation Solver</h1>
+    <p>This app will solve quadratic equations for you.</p>
+    <p>Please enter the coefficients below.</p>
 
     <script type="text/python3">
 
@@ -39,8 +39,7 @@
           request.set_header('content-type','application/json')
           data = json.dumps({'a_value': int(document['a'].value),
                              'b_value': int(document['b'].value),
-                             'c_value': int(document['c'].value),
-                             'ev': ev.target.text})
+                             'c_value': int(document['c'].value)})
           request.send(data)
 
       document['solve_button'].bind('click', get_values)
@@ -59,7 +58,6 @@
 
     <div>
     <p>The solution is: <span id='result'></span></p>
-    <p>The event is: <span id='event'></span></p>
     </div>
 
 </body>

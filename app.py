@@ -10,10 +10,8 @@ def index():
 @app.route('/solve', methods=['POST'])
 def solve_it():
     params = request.json
-    a, b, c, e = (params['a_value'],
-                  params['b_value'],
-                  params['c_value'],
-                  params['ev'])
+    a, b, c = (params['a_value'],
+               params['b_value'],
+               params['c_value'])
     ans = [(np.sqrt(b**2 - 4 * a * c) + s * b) / (2 * a) for s in [1, -1]]
-    return jsonify({'values': [round(i, 3) for i in ans],
-                    'ev': e})
+    return jsonify({'values': [round(i, 3) for i in ans]})

@@ -19,42 +19,38 @@
 
     <script type='text/javascript'>
 
-      get_values = function() {
-          a = $('input#a').val()
-          return {'a': parseInt(a)}
-      };
-
-      solve_it = function(values) {
+      solve_it = function() {
           $.ajax({
               url: '/solve',
               contentType: 'application/json',
               method: 'POST',
-              success: function(data) {
+              // success: function(data) {$('span#result').html(data.a)},
+              data: JSON.stringify(a)
+          })
+              .done(function(data) {
                   $('span#result').html(data.a)
-              },
-              data: JSON.stringify(values.a)
-          });
-      };
+              })
+      }
 
-      $(document).ready(function() {
-          $('button#solve_button').click(function() {
-              values = get_values()
-              solve_it(values);
+      $().ready(function() {
+          $('button#solve').click(function() {
+              a = parseInt($('input#a').val())
+              solve_it()
           })
       })
 
     </script>
 
     <div>
-          <span>a:</span> <input id='a'></input>
+      <span>a:</span> <input id='a'></input>
     </div>
 
     <p>
-    <button type='button', id='solve_button'>Solve!</button>
+      <button type='button', id='solve'>Solve!</button>
     </p>
 
     <div>
-    <p>The solution is: <span id='result'></span></p>
+      <p>The solution is: <span id='result'></span></p>
     </div>
 
 </body>

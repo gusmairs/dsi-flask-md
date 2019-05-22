@@ -1,5 +1,5 @@
 from flask import Flask, request, render_template, jsonify
-# import numpy as np
+import numpy as np
 
 app = Flask(__name__, static_url_path='')
 
@@ -9,13 +9,9 @@ def index():
 
 @app.route('/solve', methods=['POST'])
 def solve_it():
-    a = request.json['a']
-    b = request.json['b']
-    return jsonify({'ans': a + b})
-
-    # params = request.json
-    # a, b, c = (params['a_value'],
-    #            params['b_value'],
-    #            params['c_value'])
-    # ans = [(np.sqrt(b**2 - 4 * a * c) + s * b) / (2 * a) for s in [1, -1]]
-    # return jsonify({'values': [round(i, 3) for i in ans]})
+    a, b, c = (request.json['a'],
+               request.json['b'],
+               request.json['c'])
+    disc = np.sqrt(b**2 - 4 * a * c) * np.array([1, -1])
+    roots = np.round((disc - b) / (2 * a), 3)
+    return jsonify({'root_1': roots[0], 'root_2': roots[1]})

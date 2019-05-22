@@ -1,11 +1,9 @@
-To run the demo, start the built-in Python HTTP server by
+Quick demo of a web app with Flask running the server and
+jQuery/JavaScript running the client side.
 
-    python -m brython --server
+To run the demo from the command line:
+  > export FLASK_APP=jq_app.py
+  > export FLASK_ENV=development (auto-reloads with changes)
+  > flask run
 
-The default port is 8080. To specify another port:
-
-    python -m brython --server --port 8081
-
-Then load http://localhost:<port>/demo.html in the browser address bar.
-
-For more information please visit http://brython.info.
+The default port is 5000. Control-C to kill the process.

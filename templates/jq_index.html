@@ -10,52 +10,52 @@
 </head>
 
 <body>
-    <h1>The Quadratic Equation Solver</h1>
-    <p>This app will solve quadratic equations for you.</p>
-    <p>Please enter the coefficients below.</p>
+  <h1>The Quadratic Equation Solver</h1>
+  <p>This little app will solve quadratic equations for you.</p>
+  <p>Please enter the coefficients below.</p>
 
-    <script type='text/javascript'>
+  <script type='text/javascript'>
 
-      solve_it = function(a, b, c) {
-          $.ajax({
-              url: '/solve',
-              contentType: 'application/json',
-              method: 'POST',
-              data: JSON.stringify({'a': a, 'b': b, 'c': c}),
-              success: function(resp) {
-                  $('#solutions').show();
-                  $('span#root_1').html(resp.root_1)
-                  $('span#root_2').html(resp.root_2)
-              }
-          })
-      }
+    solve_it = function(a, b, c) {
+        $.ajax({
+            url: '/solve',
+            contentType: 'application/json',
+            method: 'POST',
+            data: JSON.stringify({'a': a, 'b': b, 'c': c}),
+            success: function(resp) {
+                $('#solutions').show();
+                $('span#root_1').html(resp.root_1)
+                $('span#root_2').html(resp.root_2)
+            }
+        })
+    }
 
-      $().ready(function() {
-          $('button#solve').click(function() {
-              solve_it(parseInt($('input#a').val()),
-                       parseInt($('input#b').val()),
-                       parseInt($('input#c').val())
-              )
-          })
-      })
+    $(document).ready(function() {
+        $('input#c').on('keypress', function(e){
+            if(e.which == 13) {
+                solve_it(parseInt($('input#a').val()),
+                         parseInt($('input#b').val()),
+                         parseInt($('input#c').val())
+                )
+            }
+        })
+    })
 
-    </script>
+  </script>
 
-    <div>
-      <span>a:</span> <input id='a'></input>
-      <span>b:</span> <input id='b'></input>
-      <span>c:</span> <input id='c'></input>
-    </div>
+  <div>
+    <span>a:</span> <input id='a'></input>
+    <span>b:</span> <input id='b'></input>
+    <span>c:</span> <input id='c'></input>
+  </div>
 
-    <div><p>
-      <button type='button', id='solve'>Solve!</button>
-    </p></div>
+  <div><p>Press enter to solve.</p></div>
 
-    <div id='solutions' style='display:none'>
-      <p>The roots are:
-        <span id='root_1' ></span>
-        <span> and </span>
-        <span id='root_2'></span></p>
-    </div>
+  <div id='solutions' style='display:none'>
+    <p>The roots are:
+      <span id='root_1' ></span>
+      <span> and </span>
+      <span id='root_2'></span></p>
+  </div>
 </body>
 </html>

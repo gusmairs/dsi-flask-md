@@ -1,0 +1,15 @@
+html {
+  font-family: 'Georgia';
+  font-size: 16px;
+  color: gray;
+  line-height: 1.15;
+}
+
+h1 {
+  font-size: 24px;
+  color: royalblue;
+}
+
+#solutions {
+  color: crimson;
+}

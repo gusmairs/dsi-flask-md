@@ -7,6 +7,7 @@
   <meta name="description" content="Quadratic Equation Solver">
   <meta name="author" content="gus">
   <script type="text/javascript" src="jquery.js"></script>
+  <script type='text/javascript' src='app.js'></script>
   <link href='app.css' rel='stylesheet'>
 </head>
 
@@ -15,42 +16,13 @@
   <p>This little app will solve quadratic equations for you.</p>
   <p>Please enter the coefficients below.</p>
 
-  <script type='text/javascript'>
-
-    solve_it = function(a, b, c) {
-        $.ajax({
-            url: '/solve',
-            contentType: 'application/json',
-            method: 'POST',
-            data: JSON.stringify({'a': a, 'b': b, 'c': c}),
-            success: function(resp) {
-                $('#solutions').show();
-                $('span#root_1').html(resp.root_1)
-                $('span#root_2').html(resp.root_2)
-            }
-        })
-    }
-
-    $(document).ready(function() {
-        $('input#c').on('keypress', function(e){
-            if(e.which == 13) {
-                solve_it(parseInt($('input#a').val()),
-                         parseInt($('input#b').val()),
-                         parseInt($('input#c').val())
-                )
-            }
-        })
-    })
-
-  </script>
-
   <div id='inputs'>
     <span>a:</span> <input id='a'></input>
     <span>b:</span> <input id='b'></input>
     <span>c:</span> <input id='c'></input>
   </div>
 
-  <div><p>Press enter to solve.</p></div>
+  <p>Press enter to solve.</p>
 
   <div id='solutions' style='display:none'>
     <p>The roots are:
@@ -59,5 +31,7 @@
       <span id='root_2'></span>
     </p>
   </div>
+
 </body>
+
 </html>

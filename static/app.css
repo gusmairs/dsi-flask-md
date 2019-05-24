@@ -11,15 +11,15 @@ h1 {
 }
 
 #inputs {
-  text-indent:2%;
+  text-indent: 2%;
 }
 
 #a, #b, #c {
-  text-indent:10%;
-  height:24px;
-  width:60px;
+  text-indent: 10%;
+  height: 24px;
+  width: 60px;
   font-size: 16px;
-  color:gray;
+  color: gray;
 }
 
 #solutions {

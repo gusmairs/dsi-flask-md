@@ -1,7 +1,6 @@
 ### Essential Flask-jQuery-Ajax demo  
 
-Simple demo of a web app with Flask running the server and
-jQuery (JavaScript) running the client side. Illustrates the essential file structure of a web app driven by Python.
+Simple demo of a web app with Flask running the server and jQuery (JavaScript) running the client side. User gives parameters of a quadratic equation and gets the roots back. Illustrates the essential file structure of a web app driven by Python.
 
 To run the demo from the command line:  
 

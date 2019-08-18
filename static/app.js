@@ -15,9 +15,10 @@ solve_it = function(a, b, c) {
 $(document).ready(function() {
     $('input#c').on('keypress', function(e){
         if(e.which == 13) {
-            solve_it(parseInt($('input#a').val()),
-                     parseInt($('input#b').val()),
-                     parseInt($('input#c').val())
+            solve_it(
+                parseInt($('input#a').val()),
+                parseInt($('input#b').val()),
+                parseInt($('input#c').val())
             )
         }
     })
